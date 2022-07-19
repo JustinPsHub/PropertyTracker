@@ -13,7 +13,7 @@ namespace PropertyTracker.Data
         // public DbSet<Barn> Barns { get; set; }
         public DbSet<Building> Buildings { get; set; }
         // public DbSet<Land> Land { get; set; }
-        // public DbSet<Barn> Barns { get; set; }
+         public DbSet<Barn> Barns { get; set; }
         public DbSet<Garden> Gardens { get; set; }
 
         public DbSet<Renovation> Renovations { get; set; }
@@ -25,6 +25,7 @@ namespace PropertyTracker.Data
         public DbSet<Person> People { get; set; }
 
         public DbSet<Plant> Plants { get; set; }
+
 
     }
 }

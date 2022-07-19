@@ -18,6 +18,7 @@ namespace PropertyTracker.Models
         public double Cost { get; set; }
         public double Value { get; set; }
         public List<Building>? Buildings { get; set; }
+        public List<Person>? People { get; set; }
 
         public List<Garden>? Gardens { get; set; }
 

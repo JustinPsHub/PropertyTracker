@@ -8,10 +8,10 @@ namespace PropertyTracker.Models
 {
     public interface IRenovate
     {
-    
-        public void GetRenovationCost ()
+
+        public decimal GetRenovationCost(decimal cost)
         {
-            
+            return cost;
         }
 
 

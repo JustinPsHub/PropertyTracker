@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertyTracker.Data;
 
@@ -11,13 +12,14 @@ using PropertyTracker.Data;
 namespace PropertyTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220719164902_AddedModels")]
+    partial class AddedModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -310,9 +312,6 @@ namespace PropertyTracker.Data.Migrations
                     b.Property<Guid?>("PropertyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("RenovationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -320,8 +319,6 @@ namespace PropertyTracker.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PropertyId");
-
-                    b.HasIndex("RenovationId");
 
                     b.ToTable("People");
                 });
@@ -429,6 +426,7 @@ namespace PropertyTracker.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Contractor")
@@ -441,22 +439,29 @@ namespace PropertyTracker.Data.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("ImprovementDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImprovementType")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Price")
+                    b.Property<int>("Price")
                         .HasColumnType("int");
-
-                    b.Property<Guid>("PropertyId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Purpose")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Quantity")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("RenovatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("RenovatorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
@@ -543,10 +548,6 @@ namespace PropertyTracker.Data.Migrations
                     b.HasOne("PropertyTracker.Models.Property", null)
                         .WithMany("People")
                         .HasForeignKey("PropertyId");
-
-                    b.HasOne("PropertyTracker.Models.Renovation", null)
-                        .WithMany("Renovators")
-                        .HasForeignKey("RenovationId");
                 });
 
             modelBuilder.Entity("PropertyTracker.Models.Plant", b =>
@@ -577,11 +578,6 @@ namespace PropertyTracker.Data.Migrations
                     b.Navigation("People");
 
                     b.Navigation("Ponds");
-                });
-
-            modelBuilder.Entity("PropertyTracker.Models.Renovation", b =>
-                {
-                    b.Navigation("Renovators");
                 });
 #pragma warning restore 612, 618
         }

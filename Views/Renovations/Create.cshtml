@@ -1,0 +1,99 @@
+﻿@model PropertyTracker.Models.Renovation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Renovation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BuildingId" class="control-label"></label>
+                <input asp-for="BuildingId" class="form-control" />
+                <span asp-validation-for="BuildingId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Purpose" class="control-label"></label>
+                <input asp-for="Purpose" class="form-control" />
+                <span asp-validation-for="Purpose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImprovementType" class="control-label"></label>
+                <input asp-for="ImprovementType" class="form-control" />
+                <span asp-validation-for="ImprovementType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImprovementDescription" class="control-label"></label>
+                <input asp-for="ImprovementDescription" class="form-control" />
+                <span asp-validation-for="ImprovementDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimatedCost" class="control-label"></label>
+                <input asp-for="EstimatedCost" class="form-control" />
+                <span asp-validation-for="EstimatedCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActualCost" class="control-label"></label>
+                <input asp-for="ActualCost" class="form-control" />
+                <span asp-validation-for="ActualCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Contractor" /> @Html.DisplayNameFor(model => model.Contractor)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PropertyId" class="control-label"></label>
+                <input asp-for="PropertyId" class="form-control" />
+                <span asp-validation-for="PropertyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            @Html.DropDownList("Mobiledropdown3", new List<SelectListItem>
+     { new SelectListItem { Text = "HTC DESIRE", Value = "1", Selected=true},
+       new SelectListItem { Text = "Moto G", Value = "2"},
+       new SelectListItem { Text = "GO mobiles", Value = "3"}
+       }, "Select Mobile")
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
