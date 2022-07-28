@@ -9,7 +9,10 @@ namespace PropertyTracker.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+   
         }
+
+
         // public DbSet<Barn> Barns { get; set; }
         public DbSet<Building> Buildings { get; set; }
         // public DbSet<Land> Land { get; set; }

@@ -46,6 +46,16 @@ namespace PropertyTracker.Models
 
          public List<Renovation> renovations = new();
 
+        public static bool CheckNegatives(Property property)
+        {
+            if (property.Acreage < 0 && property.Cost < 0)
+            {
+                return false;
+            }
+            return true;
+   
+        }
+
 
     }
 

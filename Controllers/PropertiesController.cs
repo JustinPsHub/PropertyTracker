@@ -58,13 +58,18 @@ namespace PropertyTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DateTimeModified,Id,Name,Cost,Value,Acreage")] Property @property)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid  && Property.CheckNegatives(property))
             {
                 @property.Id = Guid.NewGuid();
                 _context.Add(@property);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
+                ModelState.AddModelError("Negative", "Must enter a positive integer");
+            }
+
             return View(@property);
         }
 

@@ -56,14 +56,21 @@ namespace PropertyTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Role")] Person person)
+        public async Task<IActionResult> Create([Bind("Id,Name,Role,Email")] Person person)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && Person.IsAnEmail(person))
             {
+                             
                 person.Id = Guid.NewGuid();
                 _context.Add(person);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            
+            else
+            {
+                ModelState.AddModelError("Email","Please enter a proper email address");
+
             }
             return View(person);
         }

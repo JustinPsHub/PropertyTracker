@@ -1,6 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    table, th, td {
+  padding: 15px;
+  font-size: 125%;
+}</style>
+
 
 <div class="text-center">
     <h1 class="display-4">Property Tracker</h1>
@@ -13,16 +19,28 @@
 <div class = "container">
    
     <div class="text-center">
- <div class="row">
+ <div >
+     <table name="homeTable"style="width:100%" >
       
-    <div  class="col"> <h3> <a asp-area="" asp-controller="Properties" asp-action="Create">Create New Property</a> </h3> </div>    
-     <div class="col">  <h3> <a asp-area="" asp-controller="Properties" asp-action="Index">View Existing Properties</a>  </h3></div>
-      
-     <div class="w-10"></div>
-      
+    <tr> <td><a asp-area="" asp-controller="Properties" asp-action="Create">Create New Property</a> </td> 
+        <td> <a asp-area="" asp-controller="Properties" asp-action="Index">View Existing Properties</a></td>
+    </tr>   
+    <tr>
+        <td>
+            <a asp-area="" asp-controller="People" asp-action="Create">Create New Person</a>
+        </td>
+        <td> 
+            <a asp-area="" asp-controller="People" asp-action="Index">View Existing People</a>
+        </td>
+
+    </tr>
+        
+
+      </table>
     </div>
     </div>
     </div>
+
 
     
     </body>
