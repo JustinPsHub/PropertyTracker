@@ -4,9 +4,11 @@ It's an MVC using EF Core 6 that lets users store and edit information about the
 
 3 features are:
 
-EF core
-Implemented a regular expression to ensure email addresses entered to the Person table are email addresses
-Created a class which inherits one or more properties from its parent
+-EF core
+
+-Implemented a regular expression to ensure email addresses entered to the Person table are email addresses
+
+-Created a class which inherits one or more properties from its parent
 
 
 
